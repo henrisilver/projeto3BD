@@ -11,11 +11,17 @@ CREATE TABLE Local (
        Bairro VARCHAR2(20),
        Cidade VARCHAR2(30) NOT NULL,
        Estado VARCHAR2(20) NOT NULL,
-       CEP 
+       /* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       *//* CRIAR DOMINIO TIPOCEP
+       */CEP TIPOCEP NOT NULL,
+       Complemento NUMBER(5) CHECK(Complemento >= 0),
 
-       DATANASC DATE,
-       PRIMARY KEY (NUSP),
-       UNIQUE(NOME)
+       PRIMARY KEY (Denominacao)
 );
 
 CREATE TABLE PROFESSOR (
