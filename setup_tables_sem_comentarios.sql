@@ -440,3 +440,5 @@ CREATE TABLE Participa(
         REFERENCES Equipe(Nome)
         ON DELETE CASCADE
 );
+
+COMMIT;

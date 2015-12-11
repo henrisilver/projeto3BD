@@ -10,9 +10,9 @@ INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(1,'Show da Sexta','Show de Ro
 INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(2,'Show do Sábado','Pre-pa-ra para esse showzasso!');
 INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(3,'Final do Tusca','Venha descobrir quem é a grande vencedora!');
 
-INSERT INTO Atracao VALUES(1,'Show de Rock Muito Legal. Muitos Bêbados!',18,'325-02038030-G. Infor Softwares',1,TO_DATE('12/12/15', 'DD/MM/RR'));
-INSERT INTO Atracao VALUES(2,'Pre-pa-ra para esse showzasso!',18,'325-02038030-G. Infor Softwares',2,TO_DATE('13/12/15', 'DD/MM/RR'));
-INSERT INTO Atracao VALUES(3,'Final do Tusca',18,'325-02038030-G. Infor Softwares',3,TO_DATE('20/12/15', 'DD/MM/RR'));
+INSERT INTO Atracao VALUES(1,'Show de Rock Muito Legal. Muitos Bêbados!',18,'325-02038030-G. Infor Softwares',1,TO_DATE('12/12/2015', 'DD/MM/RRRR'));
+INSERT INTO Atracao VALUES(2,'Pre-pa-ra para esse showzasso!',18,'325-02038030-G. Infor Softwares',2,TO_DATE('13/12/2015', 'DD/MM/RRRR'));
+INSERT INTO Atracao VALUES(3,'Final do Tusca',18,'325-02038030-G. Infor Softwares',3,TO_DATE('20/12/2015', 'DD/MM/RRRR'));
 
 INSERT INTO CategoriaIngresso VALUES('MI','Masculino Inteira');
 INSERT INTO CategoriaIngresso VALUES('MM','Masculino Meia');
@@ -252,4 +252,4 @@ INSERT INTO Participa VALUES('FEDERAL TEAM','Futebol',3,2,'Futebol Final',3,2);
 INSERT INTO Participa VALUES('FEDERAL TEAM','League of Legends',2,1,'LOL Eliminatórias',1,2);
 INSERT INTO Participa VALUES('FEDERAL TEAM','League of Legends',3,2,'LOL Final',1,2);
 
-Participa(Equipe, GrupoMod, GrupoEve, GrupoFas, GrupoNom, Pontuacao,Colocacao)
+COMMIT;

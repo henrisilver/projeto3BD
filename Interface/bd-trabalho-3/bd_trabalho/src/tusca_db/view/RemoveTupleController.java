@@ -99,14 +99,5 @@ public class RemoveTupleController implements Initializable {
     }
 
     private void inflateTable(){
-        atracoes.add(new Atracao("ID1","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID2","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID3","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID4","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID5","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID6","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID7","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID8","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID9","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
     }
 }

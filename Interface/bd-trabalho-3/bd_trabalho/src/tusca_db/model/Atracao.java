@@ -18,14 +18,16 @@ public class Atracao {
     private final StringProperty classificacaoEtaria;
     private final StringProperty local;
     private final StringProperty evento;
+    private final StringProperty data;
 
     public Atracao(String idAtracao, String descricao,String classificacaoEtaria,
-        String local,String evento) {
+        String local,String evento,String data) {
         this.idAtracao = new SimpleStringProperty(idAtracao);
         this.descricao = new SimpleStringProperty(descricao);
         this.classificacaoEtaria = new SimpleStringProperty(classificacaoEtaria);
         this.local = new SimpleStringProperty(local);
         this.evento = new SimpleStringProperty(evento);
+        this.data = new SimpleStringProperty(data);
     }
 
     public StringProperty getIdAtracaoProperty() {
@@ -47,6 +49,10 @@ public class Atracao {
     public StringProperty getEventoProperty() {
         return evento;
     }
+    
+    public StringProperty getDataProperty() {
+        return data;
+    }
 
     public String getIdAtracao() {
         return idAtracao.get();
@@ -67,6 +73,10 @@ public class Atracao {
     public String getEvento() {
         return evento.get();
     }
+    
+    public String getData() {
+        return data.get();
+    }
 
     public void setIdAtracao(String idAtracao) {
         this.idAtracao.set(idAtracao);
@@ -86,5 +96,9 @@ public class Atracao {
 
     public void setEvento(String evento) {
         this.evento.set(evento);
+    }
+    
+    public void setData(String data) {
+        this.data.set(data);
     }
 }

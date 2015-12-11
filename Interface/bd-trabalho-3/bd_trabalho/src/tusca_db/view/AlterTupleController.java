@@ -16,8 +16,16 @@ package tusca_db.view;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +42,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import tusca_db.model.Atracao;
+import tusca_db.model.Local;
 
 /**
  * FXML Controller class
@@ -53,6 +62,8 @@ public class AlterTupleController implements Initializable {
     @FXML
     private TextField textField5;
     @FXML
+    private TextField textField6;
+    @FXML
     private TableColumn<Atracao,String> columnIdAtracao;
     @FXML
     private TableColumn<Atracao,String> columnIdDescricao;
@@ -63,11 +74,11 @@ public class AlterTupleController implements Initializable {
     @FXML
     private TableColumn<Atracao,String> columnIdEvento;
     @FXML
+    private TableColumn<Atracao,String> columnIdData;
+    @FXML
     private TableView<Atracao> atracaoTableView;
 
     private final ObservableList<Atracao> atracoes = FXCollections.observableArrayList();
-
-    private HashSet<String> tuplasAlteradas;
 
     private int currentSelectedRow;
 
@@ -78,15 +89,8 @@ public class AlterTupleController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tuplasAlteradas = new HashSet<>();
         setupTable();
         inflateTable();
-        atracaoTableView.setEditable(true);
-        columnIdAtracao.setEditable(true);
-        columnIdDescricao.setEditable(true);
-        columnIdClassificacaoEtaria.setEditable(true);
-        columnIdLocal.setEditable(true);
-        columnIdEvento.setEditable(true);
 
         atracaoTableView.setRowFactory((TableView<Atracao> atracaoTablewView) -> {
             final TableRow<Atracao> row = new TableRow<>();
@@ -100,6 +104,7 @@ public class AlterTupleController implements Initializable {
                     textField3.setText(atracaoTableView.getItems().get(index).getClassificacaoEtaria());
                     textField4.setText(atracaoTableView.getItems().get(index).getLocal());
                     textField5.setText(atracaoTableView.getItems().get(index).getEvento());
+                    textField6.setText(atracaoTableView.getItems().get(index).getData());
                     event.consume();
                 }
             });
@@ -125,32 +130,73 @@ public class AlterTupleController implements Initializable {
         columnIdClassificacaoEtaria.setCellValueFactory(cellData -> cellData.getValue().getClassificacaoEtariaProperty());
         columnIdLocal.setCellValueFactory(cellData -> cellData.getValue().getLocalProperty());
         columnIdEvento.setCellValueFactory(cellData -> cellData.getValue().getEventoProperty());
+        columnIdData.setCellValueFactory(cellData -> cellData.getValue().getDataProperty());
     }
 
     private void inflateTable(){
-        atracoes.add(new Atracao("ID1","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID2","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID3","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID4","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID5","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID6","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID7","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID8","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
-        atracoes.add(new Atracao("ID9","SUPERSTAR","SUPERSTAR","ZINEDINE","ZIDANE"));
+        Statement statement;
+        ResultSet result;
+        Connection connection;
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl",
+                    "7960690",
+                    "a");
+            
+            statement = connection.createStatement();
+            result = statement.executeQuery("select IDATRACAO,DESCRICAO,"
+                    + "CLASSIFICACAOETARIA,LOCAL,EVENTO, TO_CHAR(DATA,"
+                    + "'MM/DD/YYYY') as DATA from atracao");
+            while (result.next()){
+                atracoes.add(new Atracao(
+                    result.getString("IDATRACAO"),
+                    result.getString("DESCRICAO"),
+                    result.getString("CLASSIFICACAOETARIA"),
+                    result.getString("LOCAL"),
+                    result.getString("EVENTO"),
+                    result.getString("DATA")));
+            }
+        
+        statement.close();
+        connection.close();
+        } catch(SQLException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AlterTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @FXML
     private void onTempModificationButtonClicked(MouseEvent event) throws IOException {
-        Atracao atr = atracoes.get(currentSelectedRow);
-        tuplasAlteradas.add(atr.getIdAtracao());
-        atr.setDescricao(textArea2.getText());
-        atr.setClassificacaoEtaria(textField3.getText());
-        atr.setLocal(textField4.getText());
-        atr.setEvento(textField5.getText());
-    }
-
-    @FXML
-    private void onPersistModificationsButtonClicked(MouseEvent event) throws IOException {
-         /* Consolidar todas as mudanças */
+        PreparedStatement statement;
+        ResultSet result;
+        Connection connection;
+        
+        String insertStatement = "UPDATE ATRACAO SET DESCRICAO = \'"+
+                textArea2.getText()+"\', CLASSIFICACAOETARIA = "+
+                textField3.getText()+",DATA = TO_DATE(\'"+
+                textField6.getText()+"\',\'MM/DD/YYYY\')"
+                + "WHERE ATRACAO.IDATRACAO = "+
+                textField1.getText();
+        System.out.println(insertStatement);
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl",
+                    "7960690",
+                    "a");
+            System.out.println(insertStatement);
+            statement = connection.prepareStatement(insertStatement);
+            statement.executeUpdate();
+        
+            statement.close();
+            connection.close();
+            atracoes.get(currentSelectedRow).setDescricao(textArea2.getText());
+            atracoes.get(currentSelectedRow).setClassificacaoEtaria(textField3.getText());
+            atracoes.get(currentSelectedRow).setData(textField6.getText());
+        } catch(SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -21,7 +21,15 @@ import javafx.scene.control.TextField;
 import tusca_db.model.Evento;
 import tusca_db.model.Local;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -30,7 +38,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
@@ -58,6 +65,8 @@ public class IncludeTupleController implements Initializable {
     @FXML
     private TextField textField5;
     @FXML
+    private TextField textField6;
+    @FXML
     private TableColumn<Local,String> columnIdLocal;
     @FXML
     private TableColumn<Evento,String> columnIdEvento;
@@ -68,6 +77,7 @@ public class IncludeTupleController implements Initializable {
 
     private final ObservableList<Evento> eventos = FXCollections.observableArrayList();
     private final ObservableList<Local> locais = FXCollections.observableArrayList();
+    
 
     /**
      * Initializes the controller class.
@@ -78,7 +88,12 @@ public class IncludeTupleController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         setForeignKeysTables();
-        inflateTable();
+        textField1.setText(Integer.toString((int)(Math.round(Math.random()*9999))));
+        try {
+            inflateTable();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         localFKTableView.setRowFactory((TableView<Local> localFKTablewView) -> {
             final TableRow<Local> row = new TableRow<>();
@@ -123,9 +138,38 @@ public class IncludeTupleController implements Initializable {
 
     @FXML
     public void onRegisterButtonClicked(MouseEvent event) throws IOException{
-            informativeLabel.setText((String)textField1.getText()
-                +textArea2.getText()+
-                textField3.getText()+textField4.getText()+textField5.getText());
+        PreparedStatement statement;
+        ResultSet result;
+        Connection connection;
+        
+        String insertStatement = "INSERT INTO ATRACAO VALUES("
+                +textField1.getText()+",\'"
+                +textArea2.getText()+"\',"
+                +textField3.getText()+",\'"
+                +textField4.getText()+"\',"
+                +textField5.getText()+","
+                + "TO_DATE(\'"
+                +textField6.getText()
+                +"\',\'DD/MM/YYYY\'))";
+        System.out.println(insertStatement);
+        informativeLabel.setText(insertStatement);
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl",
+                    "7960690",
+                    "a");
+            System.out.println(insertStatement);
+            statement = connection.prepareStatement(insertStatement);
+            statement.executeUpdate();
+        
+            statement.close();
+            connection.close();
+            informativeLabel.setText("Atracao Registrada!");
+        } catch(SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+            informativeLabel.setText("Falha ao registrar atracao!");
+        }
     }
 
     private void setForeignKeysTables(){
@@ -136,16 +180,51 @@ public class IncludeTupleController implements Initializable {
         columnIdEvento.setCellValueFactory(cellData -> cellData.getValue().getIdEventoProperty());
     }
 
-    private void inflateTable() {
-        /* Substituir com os dados das consultas! */
-        eventos.add(new Evento("ID1","Peperoni","Tchuca","Ronald"));
-        eventos.add(new Evento("ID2","Peperoni","Tchuca","Ronald"));
-        eventos.add(new Evento("ID3","Peperoni","Tchuca","Ronald"));
-        eventos.add(new Evento("ID4","Peperoni","Tchuca","Ronald"));
-
-        locais.add(new Local("ID1","Peperoni","Tchuca","Ronald"));
-        locais.add(new Local("ID2","Peperoni","Tchuca","Ronald"));
-        locais.add(new Local("ID3","Peperoni","Tchuca","Ronald"));
-        locais.add(new Local("ID4","Peperoni","Tchuca","Ronald"));
+    private void inflateTable() throws ClassNotFoundException {
+        Statement statement;
+        ResultSet result;
+        Connection connection;
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl",
+                    "7960690",
+                    "a");
+            
+            statement = connection.createStatement();
+            result = statement.executeQuery("select * from local");
+            while (result.next()){
+                locais.add(new Local(result.getString("DENOMINACAO"),
+                result.getString("NUMERO"),
+                result.getString("CEP"),
+                result.getString("COMPLEMENTO")));
+            }
+        
+        statement.close();
+        connection.close();
+        } catch(SQLException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            connection = DriverManager.getConnection(
+                    "jdbc:oracle:thin:@grad.icmc.usp.br:15215:orcl",
+                    "7960690",
+                    "a");
+            statement = connection.createStatement();
+            result = statement.executeQuery("select * from evento");
+            while (result.next()){
+                eventos.add(new Evento(result.getString("IDEVENTO"),
+                result.getString("NOME"),
+                result.getString("DESCRICAO"),
+                result.getString("LOGOTIPO")));
+            }
+        
+            statement.close();
+            connection.close();
+        } catch(SQLException ex) {
+            Logger.getLogger(IncludeTupleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
