@@ -39,10 +39,10 @@ public class Tusca_db extends Application {
             e.consume();
             closeProgram();
         });
-        this.primaryStage.setMinHeight(600);
-        this.primaryStage.setMinWidth(800);
-        this.primaryStage.setMaxHeight(600);
-        this.primaryStage.setMaxWidth(800);
+        this.primaryStage.setMinHeight(700);
+        this.primaryStage.setMinWidth(1000);
+        this.primaryStage.setMaxHeight(700);
+        this.primaryStage.setMaxWidth(1000);
         this.primaryStage.setResizable(false);
         
         AnchorPane root = FXMLLoader.load(getClass().getResource("view/OptionsMenu.fxml"),Tusca_db.BUNDLE);

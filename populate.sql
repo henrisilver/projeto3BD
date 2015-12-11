@@ -134,6 +134,7 @@ INSERT INTO Boleto VALUES(7,TO_DATE('25/12/2015','DD/MM/YYYY'));
 
 INSERT INTO Equipe VALUES('CAASO TEAM');
 INSERT INTO Equipe VALUES('FEDERAL TEAM');
+INSERT INTO Equipe VALUES('UNICEP TEAM');
 
 INSERT INTO Modalidade VALUES('Futebol','A');
 INSERT INTO Modalidade VALUES('League of Legends','A');
@@ -171,9 +172,11 @@ INSERT INTO Jogo VALUES ('FEDERAL TEAM','CAASO TEAM',TO_DATE('20/12/2015 14:00',
 
 INSERT INTO Atletica(Nome,Grito) VALUES('GAPERIA','NÓS SOMOS LÁ DE SÃO CARLOS!');
 INSERT INTO Atletica(Nome,Grito) VALUES('FRANGUERIA','NÃO SABEMOS CÁLCULO NEM PROGRAMAÇÃO!');
+INSERT INTO Atletica(Nome,Grito) VALUES('RUACOMCEP','UNICA FACULDADE MAIS LONGE QUE O CAMPUS 2 DE SAO CARLOS! UHUL!');
 
 INSERT INTO Universidade VALUES('Universidade de São Paulo - Campus São Carlos','GAPERIA','São Carlos','SP');
 INSERT INTO Universidade VALUES('Universidade Federal de São Carlos','FRANGUERIA','São Carlos','SP');
+INSERT INTO Universidade VALUES('UNICEP - UNIVERSIDADE SEM CEP','RUACOMCEP','São Carlos','SP');
 
 INSERT INTO Representa VALUES('CAASO TEAM','Futebol',1,'Universidade de São Paulo - Campus São Carlos');
 INSERT INTO Representa VALUES('CAASO TEAM','Futebol',3,'Universidade de São Paulo - Campus São Carlos');
@@ -235,6 +238,7 @@ INSERT INTO CategoriaPessoa VALUES('456378123',0);
 
 INSERT INTO EquipeUniversidade VALUES('CAASO TEAM','Universidade de São Paulo - Campus São Carlos');
 INSERT INTO EquipeUniversidade VALUES('FEDERAL TEAM','Universidade Federal de São Carlos');
+INSERT INTO EquipeUniversidade VALUES('UNICEP TEAM','UNICEP - UNIVERSIDADE COM CEP');
 
 INSERT INTO ParticipacaoUniversidade VALUES('Universidade de São Paulo - Campus São Carlos',1,0,0,0);
 INSERT INTO ParticipacaoUniversidade VALUES('Universidade de São Paulo - Campus São Carlos',2,0,0,0);
