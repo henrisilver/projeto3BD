@@ -167,15 +167,6 @@ CREATE TABLE EndereçoCliente(
         ON DELETE CASCADE
 );
 
-# Realmente precisamos dessa relacao?!
-# Eu a removi do MRelacional... Coloquei a Data em Compra
-#CREATE TABLE DataCompra (
-#      IDCompra NUMBER(10) CHECK (IDCompra > 0) NOT NULL,
-#      Data DATE,
-#
-#      CONSTRAINT PK_DATACOMPRA PRIMARY KEY (IDCompra)
-#);
-
 CREATE TABLE CompraPagamento(
     Compra NUMBER(10) NOT NULL,
     Tipo NUMBER(1) CHECK (Tipo = 0 OR Tipo = 1) NOT NULL,
@@ -186,8 +177,6 @@ CREATE TABLE CompraPagamento(
         ON DELETE CASCADE
 );
 
-# Compra deveria referenciar "Compra" ou
-# "CompraPagamento" como no modelo?
 CREATE TABLE Pagamento(
     Compra NUMBER(10) NOT NULL,
     Acrescimos NUMBER(7,2) CHECK(Acrescimos >= 0) NOT NULL,
@@ -405,10 +394,6 @@ CREATE TABLE CategoriaPessoa(
         ON DELETE CASCADE
 );
 
-# Seria suficiente jogar esse "Nome"  na relação "Equipe"?
-# Me parece tão desnecessário ter essas duas relações separadas...
-# Uma só de IDs e a outra com os mesmos IDs e um "Nome" junto...
-# O que me diz?
 CREATE TABLE EquipeUniversidade(
     Equipe VARCHAR2(100) NOT NULL,
     Universidade VARCHAR2(100) NOT NULL,
