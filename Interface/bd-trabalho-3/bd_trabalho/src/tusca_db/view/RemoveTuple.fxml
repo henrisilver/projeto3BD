@@ -21,15 +21,16 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView layoutX="301.0" layoutY="212.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+      <TableView fx:id="atracaoTableView" layoutX="301.0" layoutY="212.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
          <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
-            <TableColumn prefWidth="75.0" text="C3" />
-            <TableColumn prefWidth="75.0" text="C4" />
+            <TableColumn fx:id="columnIdAtracao" prefWidth="75.0" text="%Column1Title" />
+            <TableColumn fx:id="columnIdDescricao" prefWidth="75.0" text="%Column2Title" />
+            <TableColumn fx:id="columnIdClassificacaoEtaria" prefWidth="75.0" text="%Column3Title" />
+            <TableColumn fx:id="columnIdLocal" prefWidth="75.0" text="%Column4Title" />
+            <TableColumn fx:id="columnIdEvento" prefWidth="75.0" text="%Column5Title" />
          </columns>
       </TableView>
    </children>

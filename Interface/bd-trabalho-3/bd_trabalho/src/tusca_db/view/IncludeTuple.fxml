@@ -22,67 +22,66 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER_LEFT" spacing="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+      <HBox alignment="CENTER_LEFT" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
          <children>
             <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0">
                <children>
-                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label1" />
-                        <TextField fx:id="textField1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt1" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="%label1" />
+                        <TextField fx:id="textField1" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" promptText="%labelPrompt1" />
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
+                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" spacing="10.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label2" />
-                        <TextField fx:id="textField2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt2" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="%label2" />
+                        <TextArea fx:id="textArea2" prefHeight="120.0" prefWidth="210.0" promptText="%labelPrompt2" />
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
+                  <HBox layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label3" />
-                        <TextField fx:id="textField3" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt3" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="%label3" />
+                        <TextField fx:id="textField3" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" promptText="%labelPrompt3" />
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
+                  <HBox layoutX="10.0" layoutY="90.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label4" />
-                        <TextField fx:id="textField4" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt4" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="%label4" />
+                        <TextField fx:id="textField4" disable="true" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" promptText="%labelPrompt4" />
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="130.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="220.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" spacing="10.0">
                      <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label5" />
-                        <TextField fx:id="textField5" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt5" />
+                        <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="100.0" text="%label5" />
+                        <TextField fx:id="textField5" disable="true" editable="false" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="210.0" promptText="%labelPrompt5" />
                      </children>
                   </HBox>
-                  <HBox layoutX="10.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
-                     <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label6" />
-                        <TextField fx:id="textField6" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt6" />
-                     </children>
-                  </HBox>
-                  <HBox layoutX="10.0" layoutY="210.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0">
-                     <children>
-                        <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="100.0" text="%label7" />
-                        <TextField fx:id="textField7" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0" promptText="%labelPrompt7" />
-                     </children>
-                  </HBox>
-                  <Button fx:id="registerButton" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClicked" prefHeight="30.0" text="%includeTupleRegisterButton" />
+                  <Button fx:id="registerButton" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onRegisterButtonClicked" prefHeight="30.0" text="%includeTupleRegisterButton" />
                </children>
             </VBox>
-            <TableView prefHeight="270.0" prefWidth="200.0">
+            <Region HBox.hgrow="ALWAYS" />
+            <TableView fx:id="localFKTableView" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="140.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="columnIdLocal" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="%includeTupleForeignK1Title" />
               </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
+            <TableView fx:id="eventoFKTableView" layoutX="470.0" layoutY="10.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="270.0" prefWidth="150.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="columnIdEvento" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="%includeTupleForeignK2Title" />
+               </columns>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TableView>
          </children>
          <padding>
-            <Insets left="50.0" />
+            <Insets left="50.0" right="50.0" />
          </padding>
       </HBox>
       <Label fx:id="informativeLabel" layoutX="371.0" layoutY="478.0" />

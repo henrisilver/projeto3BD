@@ -10,12 +10,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tusca_db.view.OptionsMenuController">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" spacing="50.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <VBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" spacing="50.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onIncludeButtonClick" prefHeight="40.0" prefWidth="150.0" text="%optionsMenuInclude" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onRemoveButtonClick" prefHeight="40.0" prefWidth="150.0" text="%optionsMenuRemove" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAlterButtonClick" prefHeight="40.0" prefWidth="150.0" text="%optionsMenuAlter" />
-            <Button layoutX="335.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onListButtonClick" prefHeight="40.0" prefWidth="150.0" text="%optionsMenuList" />
             <Button layoutX="335.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onReportButtonClick" prefHeight="40.0" prefWidth="150.0" text="%optionsMenuReport" />
          </children>
       </VBox>
