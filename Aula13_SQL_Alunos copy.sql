@@ -4,24 +4,29 @@ DROP TABLE DISCIPLINA;
 DROP TABLE PROFESSOR;
 DROP TABLE ALUNO;*/
 
+CREATE TYPE pessoa AS OBJECT 
+( nome     VARCHAR2(32),
+      idade   NUMBER(3)
+) ;
+
 CREATE TABLE Local (
-       Denominacao VARCHAR2(30) NOT NULL,
-       Rua VARCHAR2(30) NOT NULL,
+       Denominacao VARCHAR2(30) NOT NULL, 
        Numero NUMBER(6) CHECK(Numero >= 0) NOT NULL,
+       CEP VARCHAR2(8) NOT NULL,
+       Complemento NUMBER(5) CHECK(Complemento >= 0),
+       CONSTRAINT PK_DENOMINACAO PRIMARY KEY (Denominacao),
+       CONSTRAINT FK_DENOMINACAO FOREIGN KEY (CEP) 
+                       REFERENCES   CEP(CEP) 
+            ON DELETE CASCADE, 
+);
+
+CREATE TABLE CEP (
+       CEP VARCHAR2(8) CHECK (TO_NUMBER(stringVar) >= 0 AND LENGTH(stringVar) = 8),
+       Rua VARCHAR2(30) NOT NULL,
        Bairro VARCHAR2(20),
        Cidade VARCHAR2(30) NOT NULL,
        Estado VARCHAR2(20) NOT NULL,
-       /* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       *//* CRIAR DOMINIO TIPOCEP
-       */CEP TIPOCEP NOT NULL,
-       Complemento NUMBER(5) CHECK(Complemento >= 0),
-
-       PRIMARY KEY (Denominacao)
+       CONSTRAINT PK_CEP PRIMARY KEY (CEP)
 );
 
 CREATE TABLE PROFESSOR (
