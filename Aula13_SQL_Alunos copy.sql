@@ -29,26 +29,100 @@ CREATE TABLE CEP (
        CONSTRAINT PK_CEP PRIMARY KEY (CEP)
 );
 
-CREATE TABLE PROFESSOR (
-	NFUNC NUMBER NOT NULL PRIMARY KEY, 
-	NOME VARCHAR2(30) NOT NULL UNIQUE, 
-	IDADE NUMBER(3),
-	TITULACAO CHAR(10) NOT NULL,
+CREATE TABLE Atracao (
+	IDAtracao NUMBER NOT NULL PRIMARY KEY, 
+	Descricao VARCHAR2(30) NOT NULL UNIQUE, 
+	ClassificacaoEtaria NUMBER(3),
+	Local CHAR(10) NOT NULL,
+      Evento,
 	CHECK (TITULACAO IN ('DOUTOR', 'ASSOCIADO', 'TITULAR'))
 );
 
-CREATE TABLE DISCIPLINA (
-	SIGLA CHAR(6) NOT NULL,
-	NOME VARCHAR2(30) NOT NULL,
-	NCRED NUMBER NOT NULL,
-	PROFESSOR NUMBER ,
-	LIVRO VARCHAR2(30),
-	 CONSTRAINT PK_DISCIPLINA PRIMARY KEY (SIGLA),
-	 CONSTRAINT FK_DISCIPLINA FOREIGN KEY (PROFESSOR) 
-                       REFERENCES 	PROFESSOR(NFUNC) 
-		ON DELETE SET NULL, 
-	CONSTRAINT NCREDITOS CHECK (NCRED > 0) 
+CREATE TABLE DataAtracao (
+	IDAtracao CHAR(6) NOT NULL,
+	Dia VARCHAR2(30) NOT NULL,
+      Mês,
+      Ano,
+      Hora*,
 );
+
+CREATE TABLE UtilizadaEm (
+      Atração, 
+      Categoria, 
+      Preço, 
+      QuantidadeDisponível
+);
+
+CREATE TABLE CategoriaIngresso (
+      TipoIngresso,
+      Descrição*
+);
+
+CREATE TABLE IngressoDaAtração (
+      Atração, 
+      Categoria, 
+      IDIngresso
+);
+
+CREATE TABLE IngressoCompra (
+      IDIngresso, 
+      Compra*
+);
+
+CREATE TABLE TelefoneCliente (
+      RG, 
+      Telefone
+);
+
+CREATE TABLE Cliente (
+      CPF, 
+      Senha, 
+      Email
+);
+
+CREATE TABLE CPFRG (
+      RG, 
+      CPF
+);
+
+CREATE TABLE EndereçoCliente (
+      RG, 
+      Endereco
+);
+
+CREATE TABLE Endereco ( 
+      IDEndereco, 
+      Número, 
+      CEP, 
+      Complemento*
+);
+
+CREATE TABLE Compra (
+      IDCompra, 
+      Cliente, 
+      ValorTotal, 
+      ÉConsolidada
+);
+
+CREATE TABLE DataCompra (
+      IDCompra, 
+      Dia, 
+      Mês, 
+      Ano, 
+      Hora
+);
+
+CREATE TABLE CompraPagamento (
+      Compra, 
+      Tipo
+);
+
+UtilizadaEm(
+      Atração, 
+      Categoria, 
+      Preço, 
+      QuantidadeDisponível)
+
 
 CREATE TABLE TURMA (
        	SIGLA CHAR(6) NOT NULL,
