@@ -10,95 +10,146 @@ CREATE TYPE pessoa AS OBJECT
 ) ;
 
 CREATE TABLE Local (
-       Denominacao VARCHAR2(30) NOT NULL, 
+       Denominacao VARCHAR2(100) NOT NULL CHECK (LENGTH(Denominacao) >= 2), 
        Numero NUMBER(6) CHECK(Numero >= 0) NOT NULL,
        CEP VARCHAR2(8) NOT NULL,
-       Complemento NUMBER(5) CHECK(Complemento >= 0),
-       CONSTRAINT PK_DENOMINACAO PRIMARY KEY (Denominacao),
-       CONSTRAINT FK_DENOMINACAO FOREIGN KEY (CEP) 
+       Complemento VARCHAR2(20),
+
+       CONSTRAINT PK_Local PRIMARY KEY (Denominacao),
+       CONSTRAINT FK_Local FOREIGN KEY (CEP) 
                        REFERENCES   CEP(CEP) 
-            ON DELETE CASCADE, 
+            ON DELETE CASCADE
 );
 
 CREATE TABLE CEP (
-       CEP VARCHAR2(8) CHECK (TO_NUMBER(stringVar) >= 0 AND LENGTH(stringVar) = 8),
-       Rua VARCHAR2(30) NOT NULL,
-       Bairro VARCHAR2(20),
-       Cidade VARCHAR2(30) NOT NULL,
-       Estado VARCHAR2(20) NOT NULL,
+       CEP VARCHAR2(8) NOT NULL CHECK (TO_NUMBER(stringVar) >= 0 AND LENGTH(stringVar) = 8),
+       Rua VARCHAR2(140) NOT NULL CHECK (LENGTH(Rua) >= 3),
+       Bairro VARCHAR2(50) CHECK (LENGTH(Bairro) >= 2),
+       Cidade VARCHAR2(100) NOT NULL CHECK (LENGTH(Cidade) >= 3),
+       Estado VARCHAR2(2) NOT NULL CHECK (LENGTH(Estado) = 2 AND Estado = UPPER(Estado)),
+       
        CONSTRAINT PK_CEP PRIMARY KEY (CEP)
 );
 
 CREATE TABLE Atracao (
-	IDAtracao NUMBER NOT NULL PRIMARY KEY, 
-	Descricao VARCHAR2(30) NOT NULL UNIQUE, 
-	ClassificacaoEtaria NUMBER(3),
-	Local CHAR(10) NOT NULL,
-      Evento,
-	CHECK (TITULACAO IN ('DOUTOR', 'ASSOCIADO', 'TITULAR'))
-);
-
-CREATE TABLE DataAtracao (
-	IDAtracao CHAR(6) NOT NULL,
-	Dia VARCHAR2(30) NOT NULL,
-      Mês,
-      Ano,
-      Hora*,
+	IDAtracao NUMBER(10) NOT NULL CHECK(IDAtracao > 0), 
+	Descricao VARCHAR2(2000), 
+	ClassificacaoEtaria NUMBER(2) CHECK (ClassificacaoEtaria >=0 AND ClassificacaoEtaria <=18),
+	Local VARCHAR2(100) NOT NULL,
+      Evento NUMBER(10) NOT NULL,
+      Data DATE,
+	
+      CONSTRAINT PK_Atracao PRIMARY KEY (IDAtracao),
+      CONSTRAINT FK_AtracaoLocal FOREIGN KEY (Local) 
+                       REFERENCES   Local(Denominacao) 
+            ON DELETE CASCADE, 
+      CONSTRAINT FK_AtracaoEvento FOREIGN KEY (Evento) 
+                       REFERENCES   Evento(IDEvento) 
+            ON DELETE CASCADE
 );
 
 CREATE TABLE UtilizadaEm (
-      Atração, 
-      Categoria, 
-      Preço, 
-      QuantidadeDisponível
+      Atracao NUMBER(10) NOT NULL, 
+      Categoria VARCHAR2(2) NOT NULL, 
+      Preco NUMBER(7,2) NOT NULL CHECK(Preco >= 0), 
+      QuantidadeDisponível NUMBER(6) CHECK(Numero >= 0) NOT NULL,
+
+      CONSTRAINT PK_UtilizadaEm PRIMARY KEY (Atracao, Categoria),
+      CONSTRAINT FK_UtilizadaEmAt FOREIGN KEY (Atracao) 
+                       REFERENCES   Atracao(IDAtracao) 
+            ON DELETE CASCADE,
+      CONSTRAINT FK_UtilizadaEmCa FOREIGN KEY (Categoria) 
+                       REFERENCES   CategoriaIngresso(TipoIngresso) 
+            ON DELETE CASCADE
 );
 
 CREATE TABLE CategoriaIngresso (
-      TipoIngresso,
-      Descrição*
+      TipoIngresso VARCHAR2(2) NOT NULL CHECK (LENGTH(TipoIngresso) = 2),
+      Descrição VARCHAR2(2000),
+
+      CONSTRAINT PK_CategoriaIngresso PRIMARY KEY (TipoIngresso)
 );
 
 CREATE TABLE IngressoDaAtração (
-      Atração, 
-      Categoria, 
-      IDIngresso
+      Atracao NUMBER(10) NOT NULL, 
+      Categoria VARCHAR2(2) NOT NULL, 
+      IDIngresso NUMBER(10) NOT NULL CHECK(IDIngresso > 0)
+
+      CONSTRAINT PK_IngressoDaAtr PRIMARY KEY (Atracao, Categoria, IDIngresso),
+      CONSTRAINT FK_IngressoAtr FOREIGN KEY (Atracao) 
+                       REFERENCES   UtilizadaEm(Atracao)
+            ON DELETE CASCADE,
+      CONSTRAINT FK_IngressoCat FOREIGN KEY (Categoria) 
+                       REFERENCES   UtilizadaEm(Categoria) 
+            ON DELETE CASCADE
 );
 
 CREATE TABLE IngressoCompra (
-      IDIngresso, 
-      Compra*
+      IDIngresso NUMBER(10) NOT NULL, 
+      Compra NUMBER(10),
+
+      CONSTRAINT PK_IngressoCompra PRIMARY KEY (IDIngresso),
+      CONSTRAINT FK_IngressoCompraID FOREIGN KEY (IDIngresso) 
+                       REFERENCES  IngressoDaAtração(IDIngresso)
+            ON DELETE CASCADE,
+      CONSTRAINT FK_IngressoCompraCom FOREIGN KEY (Compra) 
+                       REFERENCES  Compra(IDCompra)
+            ON DELETE CASCADE
 );
 
 CREATE TABLE TelefoneCliente (
-      RG, 
-      Telefone
+      RG VARCHAR2(9) NOT NULL, 
+      Telefone VARCHAR2(11) NOT NULL CHECK(LENGHT(Telfone) = 11),
+
+      CONSTRAINT PK_TelefoneCliente PRIMARY KEY (RG, Telefone),
+      CONSTRAINT FK_TelefoneCliente FOREIGN KEY (RG) 
+                       REFERENCES  Cliente(RG)
+            ON DELETE CASCADE
 );
 
 CREATE TABLE Cliente (
-      CPF, 
-      Senha, 
-      Email
+      RG VARCHAR2(9) NOT NULL,
+      Senha CHAR(32) NOT NULL, 
+      Email VARCHAR(61) NOT NULL,
+
+      CONSTRAINT PK_Cliente PRIMARY KEY (RG),
+      CONSTRAINT FK_Cliente FOREIGN KEY (RG) 
+                       REFERENCES  Pessoa(RG)
+            ON DELETE CASCADE
 );
 
 CREATE TABLE CPFRG (
-      RG, 
-      CPF
+      RG VARCHAR2(9) NOT NULL, 
+      CPF VARCHAR2(11) NOT NULL CHECK(LENGTH(CPF) = 11)
+
+      CONSTRAINT PK_CPFRG PRIMARY KEY (RG),
+      CONSTRAINT FK_CPFRG FOREIGN KEY (RG) 
+                       REFERENCES  Cliente(RG)
+            ON DELETE CASCADE
 );
 
 CREATE TABLE EndereçoCliente (
-      RG, 
-      Endereco
+      RG CHAR(9) NOT NULL, 
+      Endereco NUMBER(10) NOT NULL,
+
+      CONSTRAINT PK_EnderecoCliente PRIMARY KEY (RG, Endereco),
+      CONSTRAINT FK_EnderecoClienteRG FOREIGN KEY (RG) 
+                       REFERENCES  Cliente(RG)
+            ON DELETE CASCADE,
+      CONSTRAINT FK_EnderecoClienteEnd FOREIGN KEY (Endereco) 
+                       REFERENCES  Endereco(IDEndereco)
+            ON DELETE CASCADE
 );
 
 CREATE TABLE Endereco ( 
-      IDEndereco, 
-      Número, 
-      CEP, 
+      IDEndereco NUMBER(10) NOT NULL CHECK(IDEndereco > 0),  
+      Número NUMBER(6) CHECK(Numero >= 0) NOT NULL,
+      CEP CHAR(8) NOT NULL, 
       Complemento*
 );
 
 CREATE TABLE Compra (
-      IDCompra, 
+      IDCompra NUMBER(10) NOT NULL CHECK(IDCompra > 0), 
       Cliente, 
       ValorTotal, 
       ÉConsolidada
@@ -116,12 +167,6 @@ CREATE TABLE CompraPagamento (
       Compra, 
       Tipo
 );
-
-UtilizadaEm(
-      Atração, 
-      Categoria, 
-      Preço, 
-      QuantidadeDisponível)
 
 
 CREATE TABLE TURMA (
