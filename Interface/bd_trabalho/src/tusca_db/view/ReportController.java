@@ -1,13 +1,13 @@
-/* SSC___ - Databases
+/* SSC640 - Databases
  * Institute of Mathematical and Computer Sciences
  * School of Engineering of Sao Carlos
  * University of Sao Paulo
- * Project 3 - _______________
+ * Project 3 - Implementing a database in Oracle SQL
  * 11/12/2015
  ***************************************************************
  * Authors
- * Adriano Belfort de Sousa 			#- No. USP 7
- * Guilherme Caixeta de Oliveira		#- No. USP 7
+ * Adriano Belfort de Sousa 			#- No. USP 7960706
+ * Guilherme Caixeta de Oliveira		#- No. USP 8504368
  * Henrique de Almeida Machado da Silveira 	#- No. USP 7961089
  * Marcello de Paula Ferreira Costa 		#- No. USP 7960690
  ***************************************************************

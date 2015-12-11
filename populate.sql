@@ -6,9 +6,13 @@ INSERT INTO Local VALUES('325-02038030-G. Infor Softwares',325,'02038030','G. In
 INSERT INTO Local VALUES('412-09015190-Microcamp',412,'09015190','Microcamp');
 INSERT INTO Local VALUES('131-09770420-Microcamp',131,'09770420','Microcamp');
 
-INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(1,'Show da Sexta','Show de Rock Muito Legal. Muitos Bêbados!');
-INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(2,'Show do Sábado','Pre-pa-ra para esse showzasso!');
-INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(3,'Final do Tusca','Venha descobrir quem é a grande vencedora!');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(1,'TUSCA 2010','Maior evento de São Carlos. Muitos Bêbados!');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(2,'TUSCA 2011','Pre-pa-ra para esse evento louco!');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(3,'TUSCA 2012','O melhor do interior!');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(4,'ENGENHARIADAS 2013','Olimpiadas de Engenheiros 2013');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(5,'ENGENHARIADAS 2014','Olimpiadas de Engenheiros 2014');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(6,'ENGENHARIADAS 2015','Olimpiadas de Engenheiros 2015');
+INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(7,'InterUNESP','O TUSCA é mais legal...');
 
 INSERT INTO Atracao VALUES(1,'Show de Rock Muito Legal. Muitos Bêbados!',18,'325-02038030-G. Infor Softwares',1,TO_DATE('12/12/2015', 'DD/MM/RRRR'));
 INSERT INTO Atracao VALUES(2,'Pre-pa-ra para esse showzasso!',18,'325-02038030-G. Infor Softwares',2,TO_DATE('13/12/2015', 'DD/MM/RRRR'));
@@ -33,15 +37,15 @@ INSERT INTO Pessoa VALUES('123456789','Zinedine Zidane',0,TO_DATE('14/08/15', 'D
 INSERT INTO Pessoa VALUES('987654321','Professor Xavier',0,TO_DATE('26/11/15', 'DD/MM/RR'));
 INSERT INTO Pessoa VALUES('456378123','Sr. Lucas Bueno Sem Ruas',0,TO_DATE('13/01/15', 'DD/MM/RR'));
 INSERT INTO Pessoa VALUES('987823412','João Soares de Navarro',0,TO_DATE('01/05/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367181','Pessoa com Nome 1',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367122','Pessoa com Nome 2',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367183','Pessoa com Nome 3',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367184','Pessoa com Nome 4',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367185','Pessoa com Nome 5',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367186','Pessoa com Nome 6',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367187','Pessoa com Nome 7',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367188','Pessoa com Nome 8',1,TO_DATE('08/12/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES('872367189','Pessoa com Nome 9',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367181','Pato Henrique Ganso',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367122','Alexandre Ganso',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367183','Cristiano Messi',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367184','Wayne Rooney',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367185','Gianluigi Buffon',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367186','Kun Aguero',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367187','Marcello Back',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367188','Pelé Maradona',1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES('872367189','Lionel Ronaldo',1,TO_DATE('08/12/15', 'DD/MM/RR'));
 
 INSERT INTO Cliente VALUES('548763458','palavra-passe','mailbox@polonorte.pn');
 INSERT INTO Cliente VALUES('123456789','palavra-chave','superstar@emailsdafranca.fr');
@@ -132,19 +136,20 @@ INSERT INTO Boleto VALUES(2,TO_DATE('22/12/2015','DD/MM/YYYY'));
 INSERT INTO Boleto VALUES(5,TO_DATE('23/12/2015','DD/MM/YYYY'));
 INSERT INTO Boleto VALUES(7,TO_DATE('25/12/2015','DD/MM/YYYY'));
 
-INSERT INTO Equipe VALUES('CAASO TEAM');
-INSERT INTO Equipe VALUES('FEDERAL TEAM');
-INSERT INTO Equipe VALUES('UNICEP TEAM');
-
 INSERT INTO Modalidade VALUES('Futebol','A');
 INSERT INTO Modalidade VALUES('League of Legends','A');
 INSERT INTO Modalidade VALUES('Beer Pong','B');
 INSERT INTO Modalidade VALUES('Golf','B');
 
 INSERT INTO TorneioA VALUES('Futebol',1);
+INSERT INTO TorneioA VALUES('Futebol',2);
 INSERT INTO TorneioA VALUES('Futebol',3);
+INSERT INTO TorneioA VALUES('Futebol',4);
 INSERT INTO TorneioA VALUES('League of Legends',2);
 INSERT INTO TorneioA VALUES('League of Legends',3);
+INSERT INTO TorneioA VALUES('League of Legends',4);
+INSERT INTO TorneioA VALUES('League of Legends',5);
+
 
 INSERT INTO Fase VALUES('Futebol',1,1);
 INSERT INTO Fase VALUES('League of Legends',2,1);
@@ -187,37 +192,65 @@ INSERT INTO Representa VALUES('FEDERAL TEAM','Futebol',3,'Universidade Federal d
 INSERT INTO Representa VALUES('FEDERAL TEAM','League of Legends',2,'Universidade Federal de São Carlos');
 INSERT INTO Representa VALUES('FEDERAL TEAM','League of Legends',3,'Universidade Federal de São Carlos');
 
+INSERT INTO TorneioB VALUES('Beer Pong',1);
+INSERT INTO TorneioB VALUES('Beer Pong',2);
 INSERT INTO TorneioB VALUES('Beer Pong',3);
+INSERT INTO TorneioB VALUES('Beer Pong',4);
+INSERT INTO TorneioB VALUES('Beer Pong',5);
+INSERT INTO TorneioB VALUES('Beer Pong',6);
+INSERT INTO TorneioB VALUES('Beer Pong',7);
+INSERT INTO TorneioB VALUES('Golf',1);
+INSERT INTO TorneioB VALUES('Golf',2);
 INSERT INTO TorneioB VALUES('Golf',3);
+INSERT INTO TorneioB VALUES('Golf',4);
+INSERT INTO TorneioB VALUES('Golf',5);
+INSERT INTO TorneioB VALUES('Golf',6);
 
+
+INSERT INTO Disputa VALUES('Beer Pong',1,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Golf',1,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Beer Pong',2,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Golf',2,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
 INSERT INTO Disputa VALUES('Beer Pong',3,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
 INSERT INTO Disputa VALUES('Golf',3,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Beer Pong',4,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Golf',4,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Beer Pong',5,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Golf',5,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Beer Pong',6,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Golf',6,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+INSERT INTO Disputa VALUES('Beer Pong',7,1,TO_DATE('20/12/2015 13:00','DD/MM/YYYY HH24:MI'),'131-09770420-Microcamp');
+
 
 INSERT INTO Atleta VALUES('987823412',178,91,'CAASO TEAM');
 INSERT INTO Atleta VALUES('872367181',182,72,'CAASO TEAM');
 INSERT INTO Atleta VALUES('872367122',180,93,'CAASO TEAM');
-INSERT INTO Atleta VALUES('872367183',184,74,'FEDERAL TEAM');
+INSERT INTO Atleta VALUES('872367183',184,74,NULL);
 INSERT INTO Atleta VALUES('872367184',200,65,'FEDERAL TEAM');
-INSERT INTO Atleta VALUES('872367185',175,66,'FEDERAL TEAM');
-INSERT INTO Atleta VALUES('872367186',187,87,'FEDERAL TEAM');
+INSERT INTO Atleta VALUES('872367185',175,66,NULL);
+INSERT INTO Atleta VALUES('872367186',187,87,NULL);
 INSERT INTO Atleta VALUES('872367187',172,98,'CAASO TEAM');
 INSERT INTO Atleta VALUES('872367188',171,89,'FEDERAL TEAM');
-INSERT INTO Atleta VALUES('872367189',179,90,'CAASO TEAM');
-INSERT INTO Atleta VALUES('123456789',160,71,'FEDERAL TEAM');
-INSERT INTO Atleta VALUES('456378123',195,82,'CAASO TEAM');
+INSERT INTO Atleta VALUES('872367189',179,90,NULL);
+INSERT INTO Atleta VALUES('123456789',160,71,NULL);
+INSERT INTO Atleta VALUES('456378123',195,82,NULL);
 
+INSERT INTO Compete VALUES('987823412','Beer Pong',1,1,1,TO_DATE('20/12/15 00:35','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES('987823412','Beer Pong',2,1,1,TO_DATE('20/12/15 00:35','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('987823412','Beer Pong',3,1,1,TO_DATE('20/12/15 00:35','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES('987823412','Beer Pong',4,1,1,TO_DATE('20/12/15 00:35','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('872367181','Beer Pong',3,1,2,TO_DATE('20/12/15 00:34','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('872367122','Beer Pong',3,1,3,TO_DATE('20/12/15 00:29','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('872367183','Beer Pong',3,1,4,TO_DATE('20/12/15 00:27','DD/MM/RR HH24:MI'),1);
-INSERT INTO Compete VALUES('872367184','Beer Pong',3,1,5,TO_DATE('20/12/15 00:20','DD/MM/RR HH24:MI'),1);
-INSERT INTO Compete VALUES('872367185','Beer Pong',3,1,6,TO_DATE('20/12/15 00:15','DD/MM/RR HH24:MI'),1);
-INSERT INTO Compete VALUES('872367186','Beer Pong',3,1,7,TO_DATE('20/12/15 00:14','DD/MM/RR HH24:MI'),1);
-INSERT INTO Compete VALUES('872367187','Beer Pong',3,1,8,TO_DATE('20/12/15 00:09','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES('872367185','Beer Pong',3,1,5,TO_DATE('20/12/15 00:15','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES('872367186','Beer Pong',3,1,6,TO_DATE('20/12/15 00:14','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES('872367187','Beer Pong',3,1,7,TO_DATE('20/12/15 00:09','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('872367188','Golf',3,1,4,TO_DATE('20/12/15 06:30','DD/MM/RR HH24:MI'),0);
 INSERT INTO Compete VALUES('872367189','Golf',3,1,3,TO_DATE('20/12/15 06:35','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('123456789','Golf',3,1,2,TO_DATE('20/12/15 06:48','DD/MM/RR HH24:MI'),1);
 INSERT INTO Compete VALUES('456378123','Golf',3,1,1,TO_DATE('20/12/15 06:44','DD/MM/RR HH24:MI'),0);
+INSERT INTO Compete VALUES('456378123','Golf',1,1,1,TO_DATE('20/12/15 06:44','DD/MM/RR HH24:MI'),0);
+INSERT INTO Compete VALUES('456378123','Golf',2,1,1,TO_DATE('20/12/15 06:44','DD/MM/RR HH24:MI'),0);
 
 INSERT INTO CategoriaPessoa VALUES('987654321',1);
 INSERT INTO CategoriaPessoa VALUES('987823412',1);
@@ -236,9 +269,9 @@ INSERT INTO CategoriaPessoa VALUES('872367189',0);
 INSERT INTO CategoriaPessoa VALUES('123456789',0);
 INSERT INTO CategoriaPessoa VALUES('456378123',0);
 
-INSERT INTO EquipeUniversidade VALUES('CAASO TEAM','Universidade de São Paulo - Campus São Carlos');
-INSERT INTO EquipeUniversidade VALUES('FEDERAL TEAM','Universidade Federal de São Carlos');
-INSERT INTO EquipeUniversidade VALUES('UNICEP TEAM','UNICEP - UNIVERSIDADE COM CEP');
+INSERT INTO Equipe VALUES('CAASO TEAM','Universidade de São Paulo - Campus São Carlos');
+INSERT INTO Equipe VALUES('FEDERAL TEAM','Universidade Federal de São Carlos');
+INSERT INTO Equipe VALUES('UNICEP TEAM','UNICEP - UNIVERSIDADE COM CEP');
 
 INSERT INTO ParticipacaoUniversidade VALUES('Universidade de São Paulo - Campus São Carlos',1,0,0,0);
 INSERT INTO ParticipacaoUniversidade VALUES('Universidade de São Paulo - Campus São Carlos',2,0,0,0);
