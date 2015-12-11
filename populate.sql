@@ -33,7 +33,15 @@ INSERT INTO Pessoa VALUES("123456789","Zinedine Zidane",0,TO_DATE('14/08/15', 'D
 INSERT INTO Pessoa VALUES("987654321","Professor Xavier",0,TO_DATE('26/11/15', 'DD/MM/RR'));
 INSERT INTO Pessoa VALUES("456378123","Sr. Lucas Bueno Sem Ruas",0,TO_DATE('13/01/15', 'DD/MM/RR'));
 INSERT INTO Pessoa VALUES("987823412","João Soares de Navarro",0,TO_DATE('01/05/15', 'DD/MM/RR'));
-INSERT INTO Pessoa VALUES("872367182","Ferias De Uma Vez Por Todas",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367181","Pessoa com Nome 1",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367122","Pessoa com Nome 2",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367183","Pessoa com Nome 3",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367184","Pessoa com Nome 4",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367185","Pessoa com Nome 5",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367186","Pessoa com Nome 6",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367187","Pessoa com Nome 7",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367188","Pessoa com Nome 8",1,TO_DATE('08/12/15', 'DD/MM/RR'));
+INSERT INTO Pessoa VALUES("872367189","Pessoa com Nome 9",1,TO_DATE('08/12/15', 'DD/MM/RR'));
 
 INSERT INTO Cliente VALUES("987654321","SENHA","professor.xavier@xmen.xxx.men");
 INSERT INTO Cliente VALUES("987823412","senha","soreas_190@carrasco.edu.br");
@@ -145,13 +153,11 @@ INSERT INTO Fase VALUES("League of Legends",3,2);
 INSERT INTO Fase VALUES("Beer Pong",3,1);
 INSERT INTO Fase VALUES("Golf",3,1);
 
-Grupo(Modalidade, Evento, Numero, Nome)
 INSERT INTO Grupo VALUES("Futebol",1,1,"Futebol Eliminatórias");
 INSERT INTO Grupo VALUES("Futebol",3,2,"Futebol Final");
 INSERT INTO Grupo VALUES("League of Legends",2,1,"LOL Eliminatórias");
 INSERT INTO Grupo VALUES("League of Legends",3,2,"LOL Final");
 
-Jogo(Equipe1, Equipe2, Data,Placar, Resumo*, LocalRealizacao, Modalidade,Evento,Fase,Grupo)
 INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('12/12/15','DD/MM/RR'),"01X01","Jogo acirrado","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
 INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('12/12/15','DD/MM/RR'),"02X01","Vitoria CAASO","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
 INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('12/12/15','DD/MM/RR'),"04X03","Vitoria FEDERAL","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
@@ -166,28 +172,86 @@ INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('13/12/15','DD/MM/R
 INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('20/12/15','DD/MM/RR'),"01X00","Vitoria CAASO","131-09770420-Microcamp","League of Legends",3,2,"LOL Final");
 INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('20/12/15','DD/MM/RR'),"00X01","Vitoria FEDERAL","131-09770420-Microcamp","League of Legends",3,2,"LOL Final");
 
-Representa ( Equipe , Modalidade , Evento , Universidade )
+INSERT INTO Atletica(Nome,Grito) VALUES("GAPERIA","NÓS SOMOS LÁ DE SÃO CARLOS!");
+INSERT INTO Atletica(Nome,Grito) VALUES("FRANGUERIA","NÃO SABEMOS CÁLCULO NEM PROGRAMAÇÃO!");
 
+INSERT INTO Universidade VALUES("Universidade de São Paulo - Campus São Carlos","GAPERIA","São Carlos","SP");
+INSERT INTO Universidade VALUES("Universidade Federal de São Carlos","FRANGUERIA","São Carlos","SP");
 
+INSERT INTO Representa VALUES("CAASO TEAM","Futebol",1,"Universidade de São Paulo - Campus São Carlos");
+INSERT INTO Representa VALUES("CAASO TEAM","Futebol",3,"Universidade de São Paulo - Campus São Carlos");
+INSERT INTO Representa VALUES("CAASO TEAM","League of Legends",2,"Universidade de São Paulo - Campus São Carlos");
+INSERT INTO Representa VALUES("CAASO TEAM","League of Legends",3,"Universidade de São Paulo - Campus São Carlos");
+INSERT INTO Representa VALUES("FEDERAL TEAM","Futebol",1,"Universidade Federal de São Carlos");
+INSERT INTO Representa VALUES("FEDERAL TEAM","Futebol",3,"Universidade Federal de São Carlos");
+INSERT INTO Representa VALUES("FEDERAL TEAM","League of Legends",2,"Universidade Federal de São Carlos");
+INSERT INTO Representa VALUES("FEDERAL TEAM","League of Legends",3,"Universidade Federal de São Carlos");
 
-TorneioB(Modalidade, Evento)
+INSERT INTO TorneioB("Beer Pong",3);
+INSERT INTO TorneioB("Golf",3);
 
-Disputa(Modalidade, Evento, Etapa, Data, NomeLocal)
+INSERT INTO Disputa VALUES("Beer Pong",3,1,TO_DATE('20/12/15','DD/MM/RR'),"131-09770420-Microcamp");
+INSERT INTO Disputa VALUES("Golf",3,1,TO_DATE('20/12/15','DD/MM/RR'),"131-09770420-Microcamp");
 
-Compete(Atleta, Modalidade, Evento, Etapa, Colocação, Tempo, Classificado)
+INSERT INTO Atleta VALUES("987823412",178,91,"CAASO TEAM");
+INSERT INTO Atleta VALUES("872367181",182,72,"CAASO TEAM");
+INSERT INTO Atleta VALUES("872367122",180,93,"CAASO TEAM");
+INSERT INTO Atleta VALUES("872367183",184,74,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("872367184",200,65,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("872367185",175,66,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("872367186",187,87,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("872367187",172,98,"CAASO TEAM");
+INSERT INTO Atleta VALUES("872367188",171,89,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("872367189",179,90,"CAASO TEAM");
+INSERT INTO Atleta VALUES("123456789",160,71,"FEDERAL TEAM");
+INSERT INTO Atleta VALUES("987823412",195,82,"CAASO TEAM");
 
-CategoriaPessoa(RG, Categoria)
+INSERT INTO Compete VALUES("987823412","Beer Pong",3,1,1,TO_DATE('20/12/15 00:35','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367181","Beer Pong",3,1,2,TO_DATE('20/12/15 00:34','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367122","Beer Pong",3,1,3,TO_DATE('20/12/15 00:29','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367183","Beer Pong",3,1,4,TO_DATE('20/12/15 00:27','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367184","Beer Pong",3,1,5,TO_DATE('20/12/15 00:20','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367185","Beer Pong",3,1,6,TO_DATE('20/12/15 00:15','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367186","Beer Pong",3,1,7,TO_DATE('20/12/15 00:14','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367187","Beer Pong",3,1,8,TO_DATE('20/12/15 00:09','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("872367188","Golf",3,1,4,TO_DATE('20/12/15 06:30','DD/MM/RR HH24:MI'),0);
+INSERT INTO Compete VALUES("872367189","Golf",3,1,3,TO_DATE('20/12/15 06:35','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("123456789","Golf",3,1,2,TO_DATE('20/12/15 06:48','DD/MM/RR HH24:MI'),1);
+INSERT INTO Compete VALUES("987823412","Golf",3,1,1,TO_DATE('20/12/15 06:44','DD/MM/RR HH24:MI'),0);
 
-Atleta(RG, Altura, Peso, Equipe*)
+INSERT INTO CategoriaPessoa VALUES("987654321",1);
+INSERT INTO CategoriaPessoa VALUES("987823412",1);
+INSERT INTO CategoriaPessoa VALUES("872367182",1);
+INSERT INTO CategoriaPessoa VALUES("123456789",1);
+INSERT INTO CategoriaPessoa VALUES("548763458",1);
+INSERT INTO CategoriaPessoa VALUES("987823412"0);
+INSERT INTO CategoriaPessoa VALUES("872367181"0);
+INSERT INTO CategoriaPessoa VALUES("872367122"0);
+INSERT INTO CategoriaPessoa VALUES("872367183"0);
+INSERT INTO CategoriaPessoa VALUES("872367184"0);
+INSERT INTO CategoriaPessoa VALUES("872367185"0);
+INSERT INTO CategoriaPessoa VALUES("872367186"0);
+INSERT INTO CategoriaPessoa VALUES("872367187"0);
+INSERT INTO CategoriaPessoa VALUES("872367188"0);
+INSERT INTO CategoriaPessoa VALUES("872367189"0);
+INSERT INTO CategoriaPessoa VALUES("123456789"0);
+INSERT INTO CategoriaPessoa VALUES("987823412"0);
 
-Universidade (Nome, Atlética, Cidade, Estado)
+INSERT INTO EquipeUniversidade VALUES("CAASO TEAM","Universidade de São Paulo - Campus São Carlos");
+INSERT INTO EquipeUniversidade VALUES("FEDERAL TEAM","Universidade Federal de São Carlos");
 
-EquipeUniversidade(Equipe, NomeUniversidade)
+INSERT INTO ParticipacaoUniversidade VALUES("CAASO TEAM","Universidade de São Paulo - Campus São Carlos",1,0,0,0);
+INSERT INTO ParticipacaoUniversidade VALUES("CAASO TEAM","Universidade de São Paulo - Campus São Carlos",2,0,0,0);
+INSERT INTO ParticipacaoUniversidade VALUES("CAASO TEAM","Universidade de São Paulo - Campus São Carlos",3,1,0,0);
+INSERT INTO ParticipacaoUniversidade VALUES("FEDERAL TEAM","Universidade Federal de São Carlos",1,0,0,0);
+INSERT INTO ParticipacaoUniversidade VALUES("FEDERAL TEAM","Universidade Federal de São Carlos",2,0,0,0);
+INSERT INTO ParticipacaoUniversidade VALUES("FEDERAL TEAM","Universidade Federal de São Carlos",3,0,1,0);
 
-Universidade (Nome, Atlética, Cidade, Estado)
-
-Atlética(Nome, Logotipo*, Grito)
-
-ParticipaçãoUniversidade(Universidade, Evento, MOuro, MPrata, MBronze)
-
-Participa(Equipe, GrupoMod, GrupoEve, GrupoFas, GrupoNom, Pontuação, 1ºLugar, 2ºLugar)
+INSERT INTO Participa VALUES("CAASO TEAM","Futebol",1,1,"Futebol Eliminatórias",7,1);
+INSERT INTO Participa VALUES("CAASO TEAM","Futebol",3,2,"Futebol Final"3,1);
+INSERT INTO Participa VALUES("CAASO TEAM","League of Legends",2,1,"LOL Eliminatórias"3,1);
+INSERT INTO Participa VALUES("CAASO TEAM","League of Legends",3,2,"LOL Final",1,1);
+INSERT INTO Participa VALUES("FEDERAL TEAM","Futebol",1,1,"Futebol Eliminatórias",4,2);
+INSERT INTO Participa VALUES("FEDERAL TEAM","Futebol",3,2,"Futebol Final"3,2);
+INSERT INTO Participa VALUES("FEDERAL TEAM","League of Legends",2,1,"LOL Eliminatórias"1,2);
+INSERT INTO Participa VALUES("FEDERAL TEAM","League of Legends",3,2,"LOL Final",1,2);
