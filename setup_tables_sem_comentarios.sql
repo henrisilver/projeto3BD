@@ -219,7 +219,7 @@ CREATE TABLE Equipe(
 
 CREATE TABLE Modalidade(
       Nome VARCHAR2(100) NOT NULL CHECK (LENGTH(Nome) BETWEEN 2 AND 100),
-      Categoria CHAR(1) NOT NULL,
+      Categoria CHAR(1) NOT NULL CHECK (Categoria = "A" OR Categoria = "B",
 
       CONSTRAINT PK_MODALIDADE PRIMARY KEY (Nome)
 );
