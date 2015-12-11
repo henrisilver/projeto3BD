@@ -14,9 +14,17 @@ INSERT INTO Atracao VALUES(1,"Show de Rock Muito Legal. Muitos Bêbados!",18,"32
 INSERT INTO Atracao VALUES(2,"Pre-pa-ra para esse showzasso!",18,"325-02038030-G. Infor Softwares",2,TO_DATE('13/12/15', 'DD/MM/RR'));
 INSERT INTO Atracao VALUES(3,"Final do Tusca",18,"325-02038030-G. Infor Softwares",3,TO_DATE('13/12/15', 'DD/MM/RR'));
 
-INSERT INTO UtilizadaEm VALUES ();
-INSERT INTO UtilizadaEm VALUES ();
-INSERT INTO UtilizadaEm VALUES ();
+INSERT INTO UtilizadaEm VALUES (1,"MI",60.00,2000);
+INSERT INTO UtilizadaEm VALUES (1,"MM",30.00,3000);
+INSERT INTO UtilizadaEm VALUES (1,"FM",40.00,9000);
+INSERT INTO UtilizadaEm VALUES (2,"MI",90.00,2000);
+INSERT INTO UtilizadaEm VALUES (2,"MM",45.00,3000);
+INSERT INTO UtilizadaEm VALUES (2,"FM",80.00,9000);
+INSERT INTO UtilizadaEm VALUES (3,"MI",40.00,2000);
+INSERT INTO UtilizadaEm VALUES (3,"MM",20.00,3000);
+INSERT INTO UtilizadaEm VALUES (3,"FM",35.00,9000);
+
+
 
 UtilizadaEm(Atração, Categoria, Preço, QuantidadeDisponível)
 
