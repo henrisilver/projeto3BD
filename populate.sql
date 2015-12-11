@@ -12,7 +12,7 @@ INSERT INTO Evento(IDEvento,Nome,Descricao) VALUES(3,"Final do Tusca","Venha des
 
 INSERT INTO Atracao VALUES(1,"Show de Rock Muito Legal. Muitos Bêbados!",18,"325-02038030-G. Infor Softwares",1,TO_DATE('12/12/15', 'DD/MM/RR'));
 INSERT INTO Atracao VALUES(2,"Pre-pa-ra para esse showzasso!",18,"325-02038030-G. Infor Softwares",2,TO_DATE('13/12/15', 'DD/MM/RR'));
-INSERT INTO Atracao VALUES(3,"Final do Tusca",18,"325-02038030-G. Infor Softwares",3,TO_DATE('13/12/15', 'DD/MM/RR'));
+INSERT INTO Atracao VALUES(3,"Final do Tusca",18,"325-02038030-G. Infor Softwares",3,TO_DATE('20/12/15', 'DD/MM/RR'));
 
 INSERT INTO CategoriaIngresso VALUES("MI","Masculino Inteira");
 INSERT INTO CategoriaIngresso VALUES("MM","Masculino Meia");
@@ -138,30 +138,33 @@ INSERT INTO TorneioA("Futebol",3);
 INSERT INTO TorneioA("League of Legends",1);
 INSERT INTO TorneioA("League of Legends",3);
 
-INSERT INTO Fase() VALUES("Futebol",1,1);
-INSERT INTO Fase() VALUES("League of Legends",2,1);
-INSERT INTO Fase() VALUES("Futebol",3,2);
-INSERT INTO Fase() VALUES("League of Legends",3,2);
-INSERT INTO Fase() VALUES("Beer Pong",3,1);
-INSERT INTO Fase() VALUES("Golf",3,1);
+INSERT INTO Fase VALUES("Futebol",1,1);
+INSERT INTO Fase VALUES("League of Legends",2,1);
+INSERT INTO Fase VALUES("Futebol",3,2);
+INSERT INTO Fase VALUES("League of Legends",3,2);
+INSERT INTO Fase VALUES("Beer Pong",3,1);
+INSERT INTO Fase VALUES("Golf",3,1);
 
 Grupo(Modalidade, Evento, Numero, Nome)
-INSERT INTO Grupo VALUES("",,,"");
-INSERT INTO Grupo VALUES("",,,"");
+INSERT INTO Grupo VALUES("Futebol",1,1,"Futebol Eliminatórias");
+INSERT INTO Grupo VALUES("Futebol",3,2,"Futebol Final");
+INSERT INTO Grupo VALUES("League of Legends",2,1,"LOL Eliminatórias");
+INSERT INTO Grupo VALUES("League of Legends",3,2,"LOL Final");
 
-Jogo(Equipe1, Equipe2, Data, Horário, Placar, Resumo*, LocalRealizacao, Modalidade,Evento,Fase,Grupo)
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
-INSERT INTO Jogo VALUES (,,,,,,,,,,,);
+Jogo(Equipe1, Equipe2, Data,Placar, Resumo*, LocalRealizacao, Modalidade,Evento,Fase,Grupo)
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('12/12/15','DD/MM/RR'),"01X01","Jogo acirrado","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('12/12/15','DD/MM/RR'),"02X01","Vitoria CAASO","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('12/12/15','DD/MM/RR'),"04X03","Vitoria FEDERAL","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('12/12/15','DD/MM/RR'),"02X05","Vitoria CAASO","325-02038030-G. Infor Softwares","Futebol",1,1,"Futebol Eliminatórias");
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('20/12/15','DD/MM/RR'),"02X00","Vitoria CAASO","131-09770420-Microcamp","Futebol",3,2,"Futebol Final");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('20/12/15','DD/MM/RR'),"00X02","Vitoria FEDERAL","131-09770420-Microcamp","Futebol",3,2,"Futebol Final");
+
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('13/12/15','DD/MM/RR'),"01X00","Vitoria CAASO","412-09015190-Microcamp","League of Legends",2,1,"LOL Eliminatórias");
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('13/12/15','DD/MM/RR'),"01X00","Vitoria CAASO","412-09015190-Microcamp","League of Legends",2,1,"LOL Eliminatórias");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('13/12/15','DD/MM/RR'),"00X01","Vitoria CAASO","412-09015190-Microcamp","League of Legends",2,1,"LOL Eliminatórias");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('13/12/15','DD/MM/RR'),"01X00","Vitoria FEDERAL","412-09015190-Microcamp","League of Legends",2,1,"LOL Eliminatórias");
+INSERT INTO Jogo VALUES ("CAASO TEAM","FEDERAL TEAM",TO_DATE('20/12/15','DD/MM/RR'),"01X00","Vitoria CAASO","131-09770420-Microcamp","League of Legends",3,2,"LOL Final");
+INSERT INTO Jogo VALUES ("FEDERAL TEAM","CAASO TEAM",TO_DATE('20/12/15','DD/MM/RR'),"00X01","Vitoria FEDERAL","131-09770420-Microcamp","League of Legends",3,2,"LOL Final");
 
 Representa ( Equipe , Modalidade , Evento , Universidade )
 
@@ -186,9 +189,5 @@ Universidade (Nome, Atlética, Cidade, Estado)
 Atlética(Nome, Logotipo*, Grito)
 
 ParticipaçãoUniversidade(Universidade, Evento, MOuro, MPrata, MBronze)
-
-
-
-Grupo(Modalidade, Evento, Numero, Nome)
 
 Participa(Equipe, GrupoMod, GrupoEve, GrupoFas, GrupoNom, Pontuação, 1ºLugar, 2ºLugar)
